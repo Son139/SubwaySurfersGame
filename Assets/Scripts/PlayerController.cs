@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("start Game");
                 isGameStarted = true;
                 playerAnimator.SetInteger("isRunning", 1);
-                playerAnimator.speed = 1.2f;
+                playerAnimator.speed = 1.5f;
             }
         }
 
@@ -101,7 +101,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector3.up * jumpForce ;
             StartCoroutine(ChangeToJump());
-            // Bắt đầu nhảy
         }
     }
 
@@ -122,14 +121,14 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetInteger("isJump", 0);
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "object")
-    //    {
-    //        isGameStarted = false;
-    //        isGameOver = true;
-    //        playerAnimator.applyRootMotion = true;
-    //        playerAnimator.SetInteger("isDied", 1);
-    //    }
-    //}
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "object")
+        {
+            isGameStarted = false;
+            isGameOver = true;
+            playerAnimator.applyRootMotion = true;
+            playerAnimator.SetInteger("isDied", 1);
+        }
+    }
 }
