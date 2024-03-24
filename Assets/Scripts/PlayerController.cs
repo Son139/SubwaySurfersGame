@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    static public PlayerController instance;
+
     [SerializeField] Transform centerPos;
     [SerializeField] Transform leftPos;
     [SerializeField] Transform rightPos;
@@ -22,7 +24,10 @@ public class PlayerController : MonoBehaviour
     bool isGameOver = false;
     bool isJumping = false;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        PlayerController.instance = this;
+    }
 
     void Start()
     {
