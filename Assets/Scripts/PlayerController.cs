@@ -102,7 +102,6 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        // Kiểm tra xem nhân vật có đang trong trạng thái nhảy không
         if ( Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = Vector3.up * jumpForce ;
@@ -124,7 +123,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "object")
+        if (collision.gameObject.tag == "Obstacle")
         {
             isGameStarted = false;
             isGameOver = true;

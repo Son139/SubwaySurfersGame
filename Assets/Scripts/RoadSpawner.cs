@@ -9,6 +9,8 @@ public class RoadSpawner : MonoBehaviour
     protected GameObject roadSpawnPosition;
     protected float distance = 0;
     protected GameObject roadCurrent;
+    protected int instancesCreated = 0;
+    protected bool isFirstInstance = false;
 
     private void Awake()
     {
@@ -44,7 +46,27 @@ public class RoadSpawner : MonoBehaviour
         roadCurrent = Instantiate(roadPrefab, position, roadPrefab.transform.rotation);
         roadCurrent.transform.parent = transform;
         roadCurrent.SetActive(true);
+
+        // Kiểm tra xem transform có children hay không
+        if (roadCurrent.transform.childCount > 0)
+        {
+            // Lấy child đầu tiên
+            Transform firstChild = roadCurrent.transform.GetChild(0);
+
+            // Lấy GameObject Difficulties từ child đầu tiên
+            GameObject difficulties = firstChild.Find("Difficulties")?.gameObject;
+            if (difficulties != null)
+            {
+                // Lấy component ObstaclesRandom từ GameObject Difficulties
+                ObstaclesRandom obstaclesScript = difficulties.GetComponent<ObstaclesRandom>();
+                if (obstaclesScript != null && !isFirstInstance)
+                {
+                    obstaclesScript.isDefault = true;
+                }
+            }
+            isFirstInstance = true;
+        }
     }
 
-
 }
+
