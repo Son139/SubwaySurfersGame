@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
 
         if (isGameStarted)
         {
+            MoveForward();
             MoveHorizontal();
             MoveToCenter();
             Jump();
@@ -107,11 +108,6 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector3.up * jumpForce ;
             StartCoroutine(ChangeToJump());
         }
-    }
-
-    private void FixedUpdate()
-    {
-        MoveForward();
     }
 
     private void MoveForward()

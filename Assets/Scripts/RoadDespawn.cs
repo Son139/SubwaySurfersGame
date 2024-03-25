@@ -14,7 +14,7 @@ public class RoadDespawn : MonoBehaviour
     protected virtual void UpdateRoad()
     {
         this.distance = Vector3.Distance(PlayerController.instance.transform.position, transform.position);
-        if (this.distance > 116) this.Despawn();
+        if (this.distance > 220) this.Despawn();
     }
 
     protected virtual void Despawn()

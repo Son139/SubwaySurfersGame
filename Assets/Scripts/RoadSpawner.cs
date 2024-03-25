@@ -28,7 +28,7 @@ public class RoadSpawner : MonoBehaviour
     protected virtual void UpdateRoad()
     {
         distance = Vector3.Distance(PlayerController.instance.transform.position, roadCurrent.transform.position);
-        if (distance > 58) Spawn();
+        if (distance > 116) Spawn();
     }
 
     protected virtual void Spawn()
