@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
 
     bool isGameStarted = false;
     bool isGameOver = false;
-    bool isJumping = false;
 
     private void Awake()
     {

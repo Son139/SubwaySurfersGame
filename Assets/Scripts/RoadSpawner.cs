@@ -47,14 +47,15 @@ public class RoadSpawner : MonoBehaviour
         roadCurrent.transform.parent = transform;
         roadCurrent.SetActive(true);
 
-        // Kiểm tra xem transform có children hay không
-        if (roadCurrent.transform.childCount > 0)
+        // Lấy hai child đầu tiên của roadCurrent
+        int childCount = Mathf.Min(2, roadCurrent.transform.childCount);
+        Debug.Log("số con là: "+childCount);  
+        for (int i = 0; i < childCount; i++)
         {
-            // Lấy child đầu tiên
-            Transform firstChild = roadCurrent.transform.GetChild(0);
+            Transform child = roadCurrent.transform.GetChild(i);
 
-            // Lấy GameObject Difficulties từ child đầu tiên
-            GameObject difficulties = firstChild.Find("Difficulties")?.gameObject;
+            // Lấy GameObject Difficulties từ child
+            GameObject difficulties = child.Find("Difficulties")?.gameObject;
             if (difficulties != null)
             {
                 // Lấy component ObstaclesRandom từ GameObject Difficulties
@@ -64,9 +65,10 @@ public class RoadSpawner : MonoBehaviour
                     obstaclesScript.isDefault = true;
                 }
             }
-            isFirstInstance = true;
         }
+        isFirstInstance = true;
     }
+
 
 }
 

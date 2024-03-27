@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1844929910865104585}
   - component: {fileID: 4111700783531915160}
   - component: {fileID: 3693193569840470403}
-  - component: {fileID: -8147533339077624549}
+  - component: {fileID: 3553813633460370128}
   m_Layer: 0
   m_Name: RoadCloseObs
   m_TagString: Obstacle
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8553318212846268992}
   m_LocalRotation: {x: 0.0014268521, y: -0.20705307, z: -0.0067449384, w: 0.9783054}
-  m_LocalPosition: {x: -2.69, y: 1.112, z: 0}
+  m_LocalPosition: {x: -2.803, y: 1.112, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -90,7 +90,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &-8147533339077624549
+--- !u!65 &3553813633460370128
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,5 +101,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4322093, y: 0.26041827, z: 0.17045926}
-  m_Center: {x: 2.4577054e-10, y: -0.02093832, z: 0.008831587}
+  m_Size: {x: 0.4322093, y: 0.24833867, z: 0.18812251}
+  m_Center: {x: -1.0090409e-11, y: -0.026977524, z: 8.547042e-12}
