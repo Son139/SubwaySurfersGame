@@ -8,6 +8,7 @@ public class CoinController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.itemCollected);
             PlayerPrefs.SetInt("totalCoins", PlayerPrefs.GetInt("totalCoins", 0) + 1);
             Destroy(gameObject);
         }

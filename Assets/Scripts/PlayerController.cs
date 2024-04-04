@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject tapToStartPanel;
+    [SerializeField] GameObject guiPlayGame;
 
     [Header("Android Control")]
     private Vector3 fp;   //First touch position
@@ -61,8 +62,9 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("start Game");
                 isGameStarted = true;
                 playerAnimator.SetInteger("isRunning", 1);
-                playerAnimator.speed = 1.5f;
+                playerAnimator.speed = 1.2f;
                 tapToStartPanel.SetActive(false);
+                guiPlayGame.SetActive(true);
             }
         }
 
@@ -82,6 +84,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!gameOverPanel.activeSelf)
             {
+                AudioManager.instance.StopMusic();
                 gameOverPanel.SetActive(true);
             }
         }
@@ -213,6 +216,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstacle")
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.death);
             isGameStarted = false;
             isGameOver = true;
             playerAnimator.applyRootMotion = true;
