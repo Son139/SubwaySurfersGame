@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     public float maxDistance;
     public LayerMask layerMask;
 
-
+    bool canMove = true;
     bool isGameStarted;
     bool isGameOver;
 
@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("start Game");
                 isGameStarted = true;
                 playerAnimator.SetInteger("isRunning", 1);
                 playerAnimator.speed = 1.2f;
@@ -70,18 +69,22 @@ public class PlayerController : MonoBehaviour
 
         if (isGameStarted)
         {
-            MoveForward();
-#if UNITY_EDITOR
-            MoveHorizontal();
-#elif UNITY_ANDROID
-            androidControl();
-#endif
-            MoveToCenter();
+            if (canMove)
+            {
+                MoveForward();
+    //#if UNITY_EDITOR
+                MoveHorizontal();
+    //#elif UNITY_ANDROID
+                //androidControl();
+    //#endif
+                MoveToCenter();
+            }
             Jump();
         }
 
         if (isGameOver)
         {
+            canMove = false;
             if (!gameOverPanel.activeSelf)
             {
                 AudioManager.instance.StopMusic();
